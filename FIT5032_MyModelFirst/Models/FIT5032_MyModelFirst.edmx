@@ -1,0 +1,597 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="FIT5032_MyModelFirst.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2012" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityContainer Name="FIT5032_MyModelFirstStoreContainer">
+    <EntitySet Name="UsersSet" EntityType="FIT5032_MyModelFirst.Store.UsersSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="CoursesSet" EntityType="FIT5032_MyModelFirst.Store.CoursesSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="TutorsSet" EntityType="FIT5032_MyModelFirst.Store.TutorsSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="StudentsSet" EntityType="FIT5032_MyModelFirst.Store.StudentsSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="ServicesSet" EntityType="FIT5032_MyModelFirst.Store.ServicesSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="PostsSet" EntityType="FIT5032_MyModelFirst.Store.PostsSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="ClassesSet" EntityType="FIT5032_MyModelFirst.Store.ClassesSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="RegistrationsSet" EntityType="FIT5032_MyModelFirst.Store.RegistrationsSet" store:Type="Tables" Schema="dbo" />
+    <AssociationSet Name="UsersStudents" Association="FIT5032_MyModelFirst.Store.UsersStudents">
+      <End Role="Users" EntitySet="UsersSet" />
+      <End Role="Students" EntitySet="StudentsSet" />
+    </AssociationSet>
+    <AssociationSet Name="TutorsClasses" Association="FIT5032_MyModelFirst.Store.TutorsClasses">
+      <End Role="Tutors" EntitySet="TutorsSet" />
+      <End Role="Classes" EntitySet="ClassesSet" />
+    </AssociationSet>
+    <AssociationSet Name="StudentsRegistrations" Association="FIT5032_MyModelFirst.Store.StudentsRegistrations">
+      <End Role="Students" EntitySet="StudentsSet" />
+      <End Role="Registrations" EntitySet="RegistrationsSet" />
+    </AssociationSet>
+    <AssociationSet Name="ClassesRegistrations" Association="FIT5032_MyModelFirst.Store.ClassesRegistrations">
+      <End Role="Classes" EntitySet="ClassesSet" />
+      <End Role="Registrations" EntitySet="RegistrationsSet" />
+    </AssociationSet>
+    <AssociationSet Name="ClassesCourses" Association="FIT5032_MyModelFirst.Store.ClassesCourses">
+      <End Role="Classes" EntitySet="ClassesSet" />
+      <End Role="Courses" EntitySet="CoursesSet" />
+    </AssociationSet>
+    <AssociationSet Name="UsersTutors" Association="FIT5032_MyModelFirst.Store.UsersTutors">
+      <End Role="Users" EntitySet="UsersSet" />
+      <End Role="Tutors" EntitySet="TutorsSet" />
+    </AssociationSet>
+    <AssociationSet Name="UsersPosts" Association="FIT5032_MyModelFirst.Store.UsersPosts">
+      <End Role="Users" EntitySet="UsersSet" />
+      <End Role="Posts" EntitySet="PostsSet" />
+    </AssociationSet>
+    <AssociationSet Name="ServicesRegistrations" Association="FIT5032_MyModelFirst.Store.ServicesRegistrations">
+      <End Role="Services" EntitySet="ServicesSet" />
+      <End Role="Registrations" EntitySet="RegistrationsSet" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="UsersSet">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="userName" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="email" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="password" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="role" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="createdAt" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="CoursesSet">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="name" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="intro" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="duration" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="createdAt" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="TutorsSet">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="firstname" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="surname" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="intro" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="position" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="createdAt" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Users_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="StudentsSet">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="firstname" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="surname" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="dob" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="createdAt" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Users_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ServicesSet">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="name" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="intro" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="price" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="content" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="createdAt" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="PostsSet">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="title" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="subtitle" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="content" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="createdAt" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="UsersId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ClassesSet">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="startDate" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="endDate" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="createdAt" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="TutorsId" Type="int" Nullable="false" />
+    <Property Name="CoursesId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="RegistrationsSet">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="createdAt" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="StudentsId" Type="int" Nullable="false" />
+    <Property Name="ClassesId" Type="int" Nullable="false" />
+    <Property Name="ServicesId" Type="int" Nullable="false" />
+  </EntityType>
+  <Association Name="UsersStudents">
+    <End Role="Users" Type="FIT5032_MyModelFirst.Store.UsersSet" Multiplicity="1" />
+    <End Role="Students" Type="FIT5032_MyModelFirst.Store.StudentsSet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Students">
+        <PropertyRef Name="Users_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="TutorsClasses">
+    <End Role="Tutors" Type="FIT5032_MyModelFirst.Store.TutorsSet" Multiplicity="1" />
+    <End Role="Classes" Type="FIT5032_MyModelFirst.Store.ClassesSet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Tutors">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Classes">
+        <PropertyRef Name="TutorsId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="StudentsRegistrations">
+    <End Role="Students" Type="FIT5032_MyModelFirst.Store.StudentsSet" Multiplicity="1" />
+    <End Role="Registrations" Type="FIT5032_MyModelFirst.Store.RegistrationsSet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Students">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Registrations">
+        <PropertyRef Name="StudentsId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ClassesRegistrations">
+    <End Role="Classes" Type="FIT5032_MyModelFirst.Store.ClassesSet" Multiplicity="1" />
+    <End Role="Registrations" Type="FIT5032_MyModelFirst.Store.RegistrationsSet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Classes">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Registrations">
+        <PropertyRef Name="ClassesId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ClassesCourses">
+    <End Role="Classes" Type="FIT5032_MyModelFirst.Store.ClassesSet" Multiplicity="*" />
+    <End Role="Courses" Type="FIT5032_MyModelFirst.Store.CoursesSet" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="Courses">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Classes">
+        <PropertyRef Name="CoursesId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="UsersTutors">
+    <End Role="Users" Type="FIT5032_MyModelFirst.Store.UsersSet" Multiplicity="1" />
+    <End Role="Tutors" Type="FIT5032_MyModelFirst.Store.TutorsSet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Tutors">
+        <PropertyRef Name="Users_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="UsersPosts">
+    <End Role="Users" Type="FIT5032_MyModelFirst.Store.UsersSet" Multiplicity="1" />
+    <End Role="Posts" Type="FIT5032_MyModelFirst.Store.PostsSet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Posts">
+        <PropertyRef Name="UsersId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ServicesRegistrations">
+    <End Role="Services" Type="FIT5032_MyModelFirst.Store.ServicesSet" Multiplicity="1" />
+    <End Role="Registrations" Type="FIT5032_MyModelFirst.Store.RegistrationsSet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Services">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Registrations">
+        <PropertyRef Name="ServicesId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema xmlns="http://schemas.microsoft.com/ado/2009/11/edm" xmlns:cg="http://schemas.microsoft.com/ado/2006/04/codegeneration" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" Namespace="FIT5032_MyModelFirst" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" annotation:UseStrongSpatialTypes="false">
+        <EntityContainer Name="FIT5032_MyModelFirstContainer" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="UsersSet" EntityType="FIT5032_MyModelFirst.Users" />
+          <EntitySet Name="CoursesSet" EntityType="FIT5032_MyModelFirst.Courses" />
+          <EntitySet Name="TutorsSet" EntityType="FIT5032_MyModelFirst.Tutors" />
+          <EntitySet Name="StudentsSet" EntityType="FIT5032_MyModelFirst.Students" />
+          <EntitySet Name="ServicesSet" EntityType="FIT5032_MyModelFirst.Services" />
+          <EntitySet Name="PostsSet" EntityType="FIT5032_MyModelFirst.Posts" />
+          <EntitySet Name="ClassesSet" EntityType="FIT5032_MyModelFirst.Classes" />
+          <EntitySet Name="RegistrationsSet" EntityType="FIT5032_MyModelFirst.Registrations" />
+          <AssociationSet Name="UsersStudents" Association="FIT5032_MyModelFirst.UsersStudents">
+            <End Role="Users" EntitySet="UsersSet" />
+            <End Role="Students" EntitySet="StudentsSet" />
+          </AssociationSet>
+          <AssociationSet Name="TutorsClasses" Association="FIT5032_MyModelFirst.TutorsClasses">
+            <End Role="Tutors" EntitySet="TutorsSet" />
+            <End Role="Classes" EntitySet="ClassesSet" />
+          </AssociationSet>
+          <AssociationSet Name="StudentsRegistrations" Association="FIT5032_MyModelFirst.StudentsRegistrations">
+            <End Role="Students" EntitySet="StudentsSet" />
+            <End Role="Registrations" EntitySet="RegistrationsSet" />
+          </AssociationSet>
+          <AssociationSet Name="ClassesRegistrations" Association="FIT5032_MyModelFirst.ClassesRegistrations">
+            <End Role="Classes" EntitySet="ClassesSet" />
+            <End Role="Registrations" EntitySet="RegistrationsSet" />
+          </AssociationSet>
+          <AssociationSet Name="ClassesCourses" Association="FIT5032_MyModelFirst.ClassesCourses">
+            <End Role="Classes" EntitySet="ClassesSet" />
+            <End Role="Courses" EntitySet="CoursesSet" />
+          </AssociationSet>
+          <AssociationSet Name="UsersTutors" Association="FIT5032_MyModelFirst.UsersTutors">
+            <End Role="Users" EntitySet="UsersSet" />
+            <End Role="Tutors" EntitySet="TutorsSet" />
+          </AssociationSet>
+          <AssociationSet Name="UsersPosts" Association="FIT5032_MyModelFirst.UsersPosts">
+            <End Role="Users" EntitySet="UsersSet" />
+            <End Role="Posts" EntitySet="PostsSet" />
+          </AssociationSet>
+          <AssociationSet Name="ServicesRegistrations" Association="FIT5032_MyModelFirst.ServicesRegistrations">
+            <End Role="Services" EntitySet="ServicesSet" />
+            <End Role="Registrations" EntitySet="RegistrationsSet" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Users">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="userName" Type="String" Nullable="false" />
+          <Property Name="email" Type="String" Nullable="false" />
+          <Property Name="password" Type="String" Nullable="false" />
+          <Property Name="role" Type="String" Nullable="false" />
+          <Property Name="createdAt" Type="String" Nullable="false" />
+          <NavigationProperty Name="Students" Relationship="FIT5032_MyModelFirst.UsersStudents" FromRole="Users" ToRole="Students" />
+          <NavigationProperty Name="Tutors" Relationship="FIT5032_MyModelFirst.UsersTutors" FromRole="Users" ToRole="Tutors" />
+          <NavigationProperty Name="Posts" Relationship="FIT5032_MyModelFirst.UsersPosts" FromRole="Users" ToRole="Posts" />
+        </EntityType>
+        <EntityType Name="Courses">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" Nullable="false" />
+          <Property Name="intro" Type="String" Nullable="false" />
+          <Property Name="duration" Type="String" Nullable="false" />
+          <Property Name="createdAt" Type="String" Nullable="false" />
+          <NavigationProperty Name="Classes" Relationship="FIT5032_MyModelFirst.ClassesCourses" FromRole="Courses" ToRole="Classes" />
+        </EntityType>
+        <EntityType Name="Tutors">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="firstname" Type="String" Nullable="false" />
+          <Property Name="surname" Type="String" Nullable="false" />
+          <Property Name="intro" Type="String" Nullable="false" />
+          <Property Name="position" Type="String" Nullable="false" />
+          <Property Name="createdAt" Type="String" Nullable="false" />
+          <NavigationProperty Name="Classes" Relationship="FIT5032_MyModelFirst.TutorsClasses" FromRole="Tutors" ToRole="Classes" />
+          <NavigationProperty Name="Users" Relationship="FIT5032_MyModelFirst.UsersTutors" FromRole="Tutors" ToRole="Users" />
+        </EntityType>
+        <EntityType Name="Students">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="firstname" Type="String" Nullable="false" />
+          <Property Name="surname" Type="String" Nullable="false" />
+          <Property Name="dob" Type="String" Nullable="false" />
+          <Property Name="createdAt" Type="String" Nullable="false" />
+          <NavigationProperty Name="Users" Relationship="FIT5032_MyModelFirst.UsersStudents" FromRole="Students" ToRole="Users" />
+          <NavigationProperty Name="Registrations" Relationship="FIT5032_MyModelFirst.StudentsRegistrations" FromRole="Students" ToRole="Registrations" />
+        </EntityType>
+        <EntityType Name="Services">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" Nullable="false" />
+          <Property Name="intro" Type="String" Nullable="false" />
+          <Property Name="price" Type="String" Nullable="false" />
+          <Property Name="content" Type="String" Nullable="false" />
+          <Property Name="createdAt" Type="String" Nullable="false" />
+          <NavigationProperty Name="Registrations" Relationship="FIT5032_MyModelFirst.ServicesRegistrations" FromRole="Services" ToRole="Registrations" />
+        </EntityType>
+        <EntityType Name="Posts">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="title" Type="String" Nullable="false" />
+          <Property Name="subtitle" Type="String" Nullable="false" />
+          <Property Name="content" Type="String" Nullable="false" />
+          <Property Name="createdAt" Type="String" Nullable="false" />
+          <NavigationProperty Name="Users" Relationship="FIT5032_MyModelFirst.UsersPosts" FromRole="Posts" ToRole="Users" />
+          <Property Name="UsersId" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Classes">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="startDate" Type="String" Nullable="false" />
+          <Property Name="endDate" Type="String" Nullable="false" />
+          <Property Name="createdAt" Type="String" Nullable="false" />
+          <NavigationProperty Name="Tutors" Relationship="FIT5032_MyModelFirst.TutorsClasses" FromRole="Classes" ToRole="Tutors" />
+          <Property Name="TutorsId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Registrations" Relationship="FIT5032_MyModelFirst.ClassesRegistrations" FromRole="Classes" ToRole="Registrations" />
+          <NavigationProperty Name="Courses" Relationship="FIT5032_MyModelFirst.ClassesCourses" FromRole="Classes" ToRole="Courses" />
+          <Property Name="CoursesId" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Registrations">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="createdAt" Type="String" Nullable="false" />
+          <NavigationProperty Name="Students" Relationship="FIT5032_MyModelFirst.StudentsRegistrations" FromRole="Registrations" ToRole="Students" />
+          <Property Name="StudentsId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Classes" Relationship="FIT5032_MyModelFirst.ClassesRegistrations" FromRole="Registrations" ToRole="Classes" />
+          <Property Name="ClassesId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Services" Relationship="FIT5032_MyModelFirst.ServicesRegistrations" FromRole="Registrations" ToRole="Services" />
+          <Property Name="ServicesId" Type="Int32" Nullable="false" />
+        </EntityType>
+        <Association Name="UsersStudents">
+          <End Type="FIT5032_MyModelFirst.Users" Role="Users" Multiplicity="1" />
+          <End Type="FIT5032_MyModelFirst.Students" Role="Students" Multiplicity="0..1" />
+        </Association>
+        <Association Name="TutorsClasses">
+          <End Type="FIT5032_MyModelFirst.Tutors" Role="Tutors" Multiplicity="1" />
+          <End Type="FIT5032_MyModelFirst.Classes" Role="Classes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tutors">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Classes">
+              <PropertyRef Name="TutorsId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="StudentsRegistrations">
+          <End Type="FIT5032_MyModelFirst.Students" Role="Students" Multiplicity="1" />
+          <End Type="FIT5032_MyModelFirst.Registrations" Role="Registrations" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Students">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Registrations">
+              <PropertyRef Name="StudentsId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="ClassesRegistrations">
+          <End Type="FIT5032_MyModelFirst.Classes" Role="Classes" Multiplicity="1" />
+          <End Type="FIT5032_MyModelFirst.Registrations" Role="Registrations" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Classes">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Registrations">
+              <PropertyRef Name="ClassesId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="ClassesCourses">
+          <End Type="FIT5032_MyModelFirst.Classes" Role="Classes" Multiplicity="*" />
+          <End Type="FIT5032_MyModelFirst.Courses" Role="Courses" Multiplicity="1" />
+          <ReferentialConstraint>
+            <Principal Role="Courses">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Classes">
+              <PropertyRef Name="CoursesId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="UsersTutors">
+          <End Type="FIT5032_MyModelFirst.Users" Role="Users" Multiplicity="1" />
+          <End Type="FIT5032_MyModelFirst.Tutors" Role="Tutors" Multiplicity="0..1" />
+        </Association>
+        <Association Name="UsersPosts">
+          <End Type="FIT5032_MyModelFirst.Users" Role="Users" Multiplicity="1" />
+          <End Type="FIT5032_MyModelFirst.Posts" Role="Posts" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Posts">
+              <PropertyRef Name="UsersId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="ServicesRegistrations">
+          <End Type="FIT5032_MyModelFirst.Services" Role="Services" Multiplicity="1" />
+          <End Type="FIT5032_MyModelFirst.Registrations" Role="Registrations" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Services">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Registrations">
+              <PropertyRef Name="ServicesId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+    <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="FIT5032_MyModelFirstStoreContainer" CdmEntityContainer="FIT5032_MyModelFirstContainer">
+    <EntitySetMapping Name="UsersSet">
+      <EntityTypeMapping TypeName="IsTypeOf(FIT5032_MyModelFirst.Users)">
+        <MappingFragment StoreEntitySet="UsersSet">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="userName" ColumnName="userName" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="password" ColumnName="password" />
+          <ScalarProperty Name="role" ColumnName="role" />
+          <ScalarProperty Name="createdAt" ColumnName="createdAt" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CoursesSet">
+      <EntityTypeMapping TypeName="IsTypeOf(FIT5032_MyModelFirst.Courses)">
+        <MappingFragment StoreEntitySet="CoursesSet">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="intro" ColumnName="intro" />
+          <ScalarProperty Name="duration" ColumnName="duration" />
+          <ScalarProperty Name="createdAt" ColumnName="createdAt" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TutorsSet">
+      <EntityTypeMapping TypeName="IsTypeOf(FIT5032_MyModelFirst.Tutors)">
+        <MappingFragment StoreEntitySet="TutorsSet">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="firstname" ColumnName="firstname" />
+          <ScalarProperty Name="surname" ColumnName="surname" />
+          <ScalarProperty Name="intro" ColumnName="intro" />
+          <ScalarProperty Name="position" ColumnName="position" />
+          <ScalarProperty Name="createdAt" ColumnName="createdAt" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="StudentsSet">
+      <EntityTypeMapping TypeName="IsTypeOf(FIT5032_MyModelFirst.Students)">
+        <MappingFragment StoreEntitySet="StudentsSet">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="firstname" ColumnName="firstname" />
+          <ScalarProperty Name="surname" ColumnName="surname" />
+          <ScalarProperty Name="dob" ColumnName="dob" />
+          <ScalarProperty Name="createdAt" ColumnName="createdAt" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ServicesSet">
+      <EntityTypeMapping TypeName="IsTypeOf(FIT5032_MyModelFirst.Services)">
+        <MappingFragment StoreEntitySet="ServicesSet">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="intro" ColumnName="intro" />
+          <ScalarProperty Name="price" ColumnName="price" />
+          <ScalarProperty Name="content" ColumnName="content" />
+          <ScalarProperty Name="createdAt" ColumnName="createdAt" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PostsSet">
+      <EntityTypeMapping TypeName="IsTypeOf(FIT5032_MyModelFirst.Posts)">
+        <MappingFragment StoreEntitySet="PostsSet">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="title" ColumnName="title" />
+          <ScalarProperty Name="subtitle" ColumnName="subtitle" />
+          <ScalarProperty Name="content" ColumnName="content" />
+          <ScalarProperty Name="createdAt" ColumnName="createdAt" />
+          <ScalarProperty Name="UsersId" ColumnName="UsersId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ClassesSet">
+      <EntityTypeMapping TypeName="IsTypeOf(FIT5032_MyModelFirst.Classes)">
+        <MappingFragment StoreEntitySet="ClassesSet">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="startDate" ColumnName="startDate" />
+          <ScalarProperty Name="endDate" ColumnName="endDate" />
+          <ScalarProperty Name="createdAt" ColumnName="createdAt" />
+          <ScalarProperty Name="TutorsId" ColumnName="TutorsId" />
+          <ScalarProperty Name="CoursesId" ColumnName="CoursesId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="RegistrationsSet">
+      <EntityTypeMapping TypeName="IsTypeOf(FIT5032_MyModelFirst.Registrations)">
+        <MappingFragment StoreEntitySet="RegistrationsSet">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="createdAt" ColumnName="createdAt" />
+          <ScalarProperty Name="StudentsId" ColumnName="StudentsId" />
+          <ScalarProperty Name="ClassesId" ColumnName="ClassesId" />
+          <ScalarProperty Name="ServicesId" ColumnName="ServicesId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="UsersStudents" TypeName="FIT5032_MyModelFirst.UsersStudents" StoreEntitySet="StudentsSet">
+      <EndProperty Name="Users">
+        <ScalarProperty Name="Id" ColumnName="Users_Id" />
+      </EndProperty>
+      <EndProperty Name="Students">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="UsersTutors" TypeName="FIT5032_MyModelFirst.UsersTutors" StoreEntitySet="TutorsSet">
+      <EndProperty Name="Users">
+        <ScalarProperty Name="Id" ColumnName="Users_Id" />
+      </EndProperty>
+      <EndProperty Name="Tutors">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+  </EntityContainerMapping>
+</Mapping></edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <edmx:Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </edmx:Connection>
+    <edmx:Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="False" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+        <DesignerProperty Name="UseLegacyProvider" Value="False" />
+      </DesignerInfoPropertySet>
+    </edmx:Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

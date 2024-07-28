@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="8c86a3d9713d42379742722855fbb445" Name="Diagram1" ZoomLevel="64" >
+        <EntityTypeShape EntityType="FIT5032_MyModelFirst.Users" Width="1.5" PointX="1.25" PointY="1.25" />
+        <EntityTypeShape EntityType="FIT5032_MyModelFirst.Courses" Width="1.5" PointX="8.75" PointY="0.5" />
+        <EntityTypeShape EntityType="FIT5032_MyModelFirst.Tutors" Width="1.5" PointX="3.75" PointY="1" />
+        <EntityTypeShape EntityType="FIT5032_MyModelFirst.Students" Width="1.5" PointX="3.375" PointY="4.875" />
+        <EntityTypeShape EntityType="FIT5032_MyModelFirst.Services" Width="1.5" PointX="8.625" PointY="5" />
+        <EntityTypeShape EntityType="FIT5032_MyModelFirst.Posts" Width="1.5" PointX="0.75" PointY="4.75" />
+        <EntityTypeShape EntityType="FIT5032_MyModelFirst.Classes" Width="1.5" PointX="6.375" PointY="0.625" />
+        <EntityTypeShape EntityType="FIT5032_MyModelFirst.Registrations" Width="1.5" PointX="6.125" PointY="5" />
+        <AssociationConnector Association="FIT5032_MyModelFirst.UsersStudents" />
+        <AssociationConnector Association="FIT5032_MyModelFirst.TutorsClasses" />
+        <AssociationConnector Association="FIT5032_MyModelFirst.StudentsRegistrations" />
+        <AssociationConnector Association="FIT5032_MyModelFirst.ClassesRegistrations" />
+        <AssociationConnector Association="FIT5032_MyModelFirst.ClassesCourses" />
+        <AssociationConnector Association="FIT5032_MyModelFirst.UsersTutors" />
+        <AssociationConnector Association="FIT5032_MyModelFirst.UsersPosts" />
+        <AssociationConnector Association="FIT5032_MyModelFirst.ServicesRegistrations" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
